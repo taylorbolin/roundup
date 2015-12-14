@@ -7,11 +7,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   })
   .when('/new', {
     templateUrl: 'app/views/new.html',
-    controller: NEW CONTROLLER HERE
+    // controller: NEW CONTROLLER HERE
   })
   .when('/:id', {
     templateUrl: 'app/views/show.html',
-    controller: SHOW CONTROLLER HERE
+    // controller: SHOW CONTROLLER HERE
   })
   .otherwise({
     templateUrl: 'app/views/404.html'
