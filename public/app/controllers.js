@@ -1,3 +1,29 @@
+angular.module('RoundUpCtrls', ['RoundUpServices'])
+.controller('RoundUpCtrl', ['$scope', 'RoundUp', function($scope, RoundUp) {
+	RoundUp.query(function success(data) {
+		console.log(data);
+		$scope.roundups = data;
+	}, function error(data) {
+		console.log(data);
+	});
+}])
+.controller('NewRoundUpCtrl', ['$scope', '$location', 'RoundUp',
+	function($scope, $location, RoundUp) {
+		$scope.createRoundUp = function() {
+			var params = {
+				group_name: $scope.group_name,
+				member_name: $scope.member_name
+			}
+			var newRoundUp = new RoundUp(params);
+			newRoundup.$save();
+			$location.path('/:id');
+		}
+	}]);
+
+// needs show controller
+
+-----------------------
+
 angular.module('AirplaneCtrls', ['AirplaneServices'])
 .controller('AirplaneCtrl', ['$scope', 'Airplane', function($scope, Airplane) {
 	$scope.airplanes = [];
