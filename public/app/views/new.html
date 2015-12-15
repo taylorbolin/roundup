@@ -1,6 +1,5 @@
 <a ng-href="/"><h1>RoundUp</h1></a>
 
-<!-- add forms and delete buttons here for new group name and new group members -->
 <form ngsubmit="createRoundUp()">
 	<div class="form-group">
 		<input type="text" class="form-control" id="group" ng-model="group" placeholder="Group Name" ng-minlength="1">
@@ -16,9 +15,6 @@
         <a type="button" class="btn btn-danger" ng-click="removePerson($index)"><i class="glyphicon glyphicon-trash"></i></a></h2>
         </li>
     </ul>
-	<a type="submit" class="btn btn-info btn-circle btn-xl"><i class="fa fa-thumbs-o-up"></i></a>
-
-	
-
+	<a type="submit" class="btn btn-info btn-circle btn-xl"><i class="fa fa-thumbs-o-up fa-4x"></i></a>
 
 </form>

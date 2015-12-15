@@ -32,6 +32,8 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 			$scope.newPerson = "";
 			}
 		}
+		// needs another function to shuffle friends array and return
+		// selected user then redirect to show page
 		
 	Array.prototype.remove = function(from, to) {
   	var rest = this.slice((to || from) + 1 || this.length);
@@ -39,4 +41,6 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
   	return this.push.apply(this, rest);
   }
 }]);
+
+// needs show controller to shuffle friends but remain on same page
 

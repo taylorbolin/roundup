@@ -1,36 +1,36 @@
 var express = require('express');
-var User = require('../models/user');
+var RoundUp = require('../models/roundup');
 var router = express.Router();
 
 router.route('/')
   .get(function(req, res) {
-    User.find(function(err, users) {
+    RoundUp.find(function(err, roundups) {
       if (err) return res.status(500).send(err);
-      res.send(users);
+      res.send(roundups);
     });
   })
   .post(function(req, res) {
-    User.create(req.body, function(err, user) {
+    RoundUp.create(req.body, function(err, roundup) {
       if (err) return res.status(500).send(err);
-      res.send(user);
+      res.send(roundup);
     });
   });
 
 router.route('/:id')
   .get(function(req, res) {
-    User.findById(req.params.id, function(err, user) {
+    RoundUp.findById(req.params.id, function(err, roundup) {
       if (err) return res.status(500).send(err);
-      res.send(user);
+      res.send(roundup);
     });
   })
   .put(function(req, res) {
-    User.findByIdAndUpdate(req.params.id, req.body, function(err) {
+    RoundUp.findByIdAndUpdate(req.params.id, req.body, function(err) {
       if (err) return res.status(500).send(err);
       res.send({'message': 'success'});
     });
   })
   .delete(function(req, res) {
-    User.findByIdAndRemove(req.params.id, function(err) {
+    RoundUp.findByIdAndRemove(req.params.id, function(err) {
       if (err) return res.status(500).send(err);
       res.send({'message': 'success'});
     });
