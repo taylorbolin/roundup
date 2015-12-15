@@ -7,7 +7,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   })
   .when('/new', {
     templateUrl: 'app/views/new.html',
-    // controller: NEW CONTROLLER HERE
+    controller: 'NewRoundUpCtrl'
   })
   .when('/:id', {
     templateUrl: 'app/views/show.html',

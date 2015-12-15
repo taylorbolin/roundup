@@ -7,60 +7,36 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 		console.log(data);
 	});
 }])
+// .controller('NewRoundUpCtrl', ['$scope', '$location', 'RoundUp',
+// 	function($scope, $location, RoundUp) {
+// 		$scope.createRoundUp = function() {
+// 			var params = {
+// 				group_name: $scope.group_name,
+// 				member_name: $scope.member_name
+// 			}
+// 			var newRoundUp = new RoundUp(params);
+// 			newRoundup.$save();
+// 			$location.path('/:id');
+// 		}
+// 	}])
 .controller('NewRoundUpCtrl', ['$scope', '$location', 'RoundUp',
 	function($scope, $location, RoundUp) {
-		$scope.createRoundUp = function() {
-			var params = {
-				group_name: $scope.group_name,
-				member_name: $scope.member_name
-			}
-			var newRoundUp = new RoundUp(params);
-			newRoundup.$save();
-			$location.path('/:id');
+		$scope.group = "";
+		$scope.friends = [];
+		$scope.removePerson = function(i) {
+			$scope.friends.remove(i);
 		}
-	}]);
+		$scope.addFriend = function() {
+			if ($scope.newPerson.length > 0) {
+			$scope.friends.push({person : $scope.newPerson, done: false});
+			$scope.newPerson = "";
+			}
+		}
+		
+	Array.prototype.remove = function(from, to) {
+  	var rest = this.slice((to || from) + 1 || this.length);
+  	this.length = from < 0 ? this.length + from : from;
+  	return this.push.apply(this, rest);
+  }
+}]);
 
-// needs show controller
-
-// -----------------------
-
-// angular.module('AirplaneCtrls', ['AirplaneServices'])
-// .controller('AirplaneCtrl', ['$scope', 'Airplane', function($scope, Airplane) {
-// 	$scope.airplanes = [];
-
-
-// 	Airplane.query(function success(data) {
-// 		$scope.airplanes = data;
-// 		$scope.searchItems = data;
-// 	}, function error(data) {
-// 		console.log(data);
-// 	});
-// }]).controller('AirplaneShowCtrl', [
-// 	'$scope', 
-// 	'$routeParams', 
-// 	'Airplane',
-// 	function($scope, $routeParams, Airplane) {
-// 		Airplane.get({id:$routeParams.id}, function success(data) {
-// 			$scope.airplane = data;
-// 		}, function error (data) {
-// 			console.log(data);
-// 		});
-// }]).controller('AirplaneNewCtrl', [
-// 	'$scope',
-// 	'$location',
-// 	'Airplane',
-// 	function($scope, $location, Airplane) {
-// 		$scope.createAirplane = function() {
-// 			var params = {
-// 				manufacturer: $scope.manufacturer,
-// 				model: $scope.model,
-// 				engines: $scope.engines,
-// 				image: $scope.image
-// 			}
-
-// 			var newAirplane = new Airplane(params);
-// 			newAirplane.$save();
-// 			$location.path('/');
-// 		}
-
-// 	}]);

@@ -1,5 +1,24 @@
-<h1>Create new group!</h1>
+<a ng-href="/"><h1>RoundUp</h1></a>
 
 <!-- add forms and delete buttons here for new group name and new group members -->
+<form ngsubmit="createRoundUp()">
+	<div class="form-group">
+		<input type="text" class="form-control" id="group" ng-model="group" placeholder="Group Name" ng-minlength="1">
 
-<button ng-href="/new" type="button" class="btn btn-info btn-circle btn-xl"><i class="glyphicon glyphicon-ok"></i></button>
+	</div>
+	<div>
+		<input type="text" class="form-control" id="friend" ng-model="newPerson" placeholder="Friend" ng-minlength="1">
+			<button class="btn btn-info btn-block" ng-click="addFriend()"><i class="glyphicon glyphicon-plus"></i>Add</button>
+	</div>
+	<ul>
+        <li ng-repeat="friend in friends">
+        <h2>{{friend.person}}
+        <a type="button" class="btn btn-danger" ng-click="removePerson($index)"><i class="glyphicon glyphicon-trash"></i></a></h2>
+        </li>
+    </ul>
+	<a type="submit" class="btn btn-info btn-circle btn-xl"><i class="fa fa-thumbs-o-up"></i></a>
+
+	
+
+
+</form>
