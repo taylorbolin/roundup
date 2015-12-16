@@ -23,24 +23,41 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 	function($scope, $location, RoundUp) {
 		$scope.group = "";
 		$scope.friends = [];
-		$scope.removePerson = function(i) {
-			$scope.friends.remove(i);
-		}
+		$scope.round = 1;
+
 		$scope.addFriend = function() {
-			if ($scope.newPerson.length > 0) {
-			$scope.friends.push({person : $scope.newPerson, done: false});
-			$scope.newPerson = "";
+			if ($scope.newFriend.length > 0) {
+			$scope.friends.push({friend : $scope.newFriend, done: false});
+			$scope.newFriend = "";
 			}
 		}
+		$scope.removeFriend = function(i) {
+			$scope.friends.remove(i);
+		}
+		$scope.submitGroup = function() {
+			console.log($scope.group);
+			console.log($scope.friends);
+			console.log('round count: '+$scope.round);
+			$location.path("/:id");
+		}
 		// needs another function to shuffle friends array and return
-		// selected user then redirect to show page
+		// selected user and redirect to show page
 		
 	Array.prototype.remove = function(from, to) {
   	var rest = this.slice((to || from) + 1 || this.length);
   	this.length = from < 0 ? this.length + from : from;
   	return this.push.apply(this, rest);
   }
-}]);
+}])
+.controller('ShuffleCtrl', ['$scope', 'RoundUp', 
+	function($scope, RoundUp) {
+		$scope.round=1;
+
+		$scope.roundCount = function() {
+		$scope.round+=1;
+		console.log('round count: '+$scope.round);
+		}
+	}]);
 
 // needs show controller to shuffle friends but remain on same page
 

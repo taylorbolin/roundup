@@ -3,18 +3,18 @@
 <form ngsubmit="createRoundUp()">
 	<div class="form-group">
 		<input type="text" class="form-control" id="group" ng-model="group" placeholder="Group Name" ng-minlength="1">
-
 	</div>
 	<div>
-		<input type="text" class="form-control" id="friend" ng-model="newPerson" placeholder="Friend" ng-minlength="1">
-			<button class="btn btn-info btn-block" ng-click="addFriend()"><i class="glyphicon glyphicon-plus"></i>Add</button>
+		<input type="text" class="form-control" id="friend" ng-model="newFriend" placeholder="Friend" ng-minlength="1">
+		<button class="btn btn-info btn-block" ng-click="addFriend()">Add</button>
 	</div>
 	<ul>
         <li ng-repeat="friend in friends">
-        <h2>{{friend.person}}
-        <a type="button" class="btn btn-danger" ng-click="removePerson($index)"><i class="glyphicon glyphicon-trash"></i></a></h2>
+        	<h2>{{friend.friend}}
+        	<a type="button" class="btn btn-danger" ng-click="removeFriend($index)"><i class="fa fa-times fa-lg"></i></a></h2>
         </li>
     </ul>
-	<a type="submit" class="btn btn-info btn-circle btn-xl"><i class="fa fa-thumbs-o-up fa-4x"></i></a>
-
+	<a type="submit" class="btn btn-info btn-circle btn-xl" ng-click="submitGroup()"><i class="fa fa-thumbs-o-up fa-4x"></i></a>
 </form>
+
+<!-- look for way to keep rendered data on page -->

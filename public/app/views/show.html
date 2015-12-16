@@ -1,6 +1,14 @@
 <a ng-href="/"><h1>RoundUp</h1></a>
 
-<h2>group name here</h2>
-<h2>selected friend name here</h2>
+	<ul>
+        <li ng-repeat="friend in friends">
+        	<h2>{{friends}}
+        	<a type="button" class="btn btn-danger" ng-click="removeFriend($index)"><i class="fa fa-times fa-lg"></i></a></h2>
+        </li>
+    </ul>
 
-<button type="button" class="btn btn-info btn-circle btn-xl"><i class="fa fa-refresh fa-4x"></i></button>
+<!-- rounds should incrememnt on each button push -->
+<h2>Round: 1</h2>
+<h2>Selected Friend</h2>
+
+<button type="button" class="btn btn-info btn-circle btn-xl" ng-click="roundCount()"><i class="fa fa-refresh fa-4x"></i></button>

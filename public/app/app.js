@@ -11,7 +11,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   })
   .when('/:id', {
     templateUrl: 'app/views/show.html',
-    // controller: SHOW CONTROLLER HERE
+    controller: 'ShuffleCtrl'
   })
   .otherwise({
     templateUrl: 'app/views/404.html'
