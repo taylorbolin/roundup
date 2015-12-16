@@ -1,4 +1,4 @@
 angular.module('RoundUpServices', ['ngResource'])
-.factory('RoundUp', ['$resource', function($resource) {
+.factory('RoundUp', ['$resource', '$routeParams', function($resource, $routeParams) {
 	return $resource('http://localhost:3000/api/roundups/:id');
 }])

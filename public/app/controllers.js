@@ -11,7 +11,6 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 	function($scope, $location, RoundUp) {
 		$scope.group = "";
 		$scope.friends = [];
-		$scope.round = 1;
 
 		$scope.addFriend = function() {
 			if ($scope.newFriend.length > 0) {
@@ -29,10 +28,11 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 					friends: $scope.friends
 				}
 				var newRoundUp = new RoundUp(params)
-				newRoundUp.$save();
-				console.log($scope.group);
-				console.log($scope.friends);
-				$location.path("/:id");
+				newRoundUp.$save().then(function(roundup) {
+					$location.path("/"+roundup._id);
+				});
+				// console.log($scope.group);
+				// console.log($scope.friends);
 			}
 		}
 	Array.prototype.remove = function(from, to) {
@@ -41,21 +41,24 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
   	return this.push.apply(this, rest);
   }
 }])
-.controller('ShuffleCtrl', ['$scope', 'RoundUp', 
-	function($scope, RoundUp) {
-		$scope.round=1;
-
+.controller('ShowRoundUpCtrl', ['$scope', '$routeParams', 'RoundUp', 
+	function($scope, $routeParams, RoundUp) {
+		$scope.round = 1;
+		console.log($routeParams.id);
+		RoundUp.get({
+			id: $routeParams.id
+		}, function success(data) {
+			$scope.RoundUp = data;
+		}, function error (data) {
+			console.log(data);
+		});
+		
+		// function should shuffle data and increment round. Maybe flag break after every 5/10 rounds.
 		$scope.shuffleBtn = function() {
-		// var group = $scope.group;
-		// var friends = $scope.friends;
-		console.log($scope.group);
-		console.log($scope.friends);
+		// console.log($scope.group);
+		// console.log($scope.friends);
 		$scope.round+=1;
-		// for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-  //   		return o;
     	}
-    	// shuffleBtn($scope.friends);
+    
 	}]);
-
-// needs show controller to shuffle friends but remain on same page
 
