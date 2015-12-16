@@ -1,14 +1,22 @@
 <a ng-href="/"><h1>RoundUp</h1></a>
 
-	<ul>
-        <li ng-repeat="friend in friends">
-        	<h2>{{friends}}
-        	<a type="button" class="btn btn-danger" ng-click="removeFriend($index)"><i class="fa fa-times fa-lg"></i></a></h2>
-        </li>
-    </ul>
+<h2>Round {{round}} is on...</h2>
+
+<h2>
+	{{roundups.group}}
+	{{roundup.group}}
+	{{group.group}}
+	{{scope.group}}
+	{{RoundUp.group}}
+	{{data.data.friend}}
+	{{group}}
+	{{newRoundUp.group}}
+</h2>
 
 <!-- rounds should incrememnt on each button push -->
-<h2>Round: 1</h2>
+<h2>Group Name</h2>
 <h2>Selected Friend</h2>
 
-<button type="button" class="btn btn-info btn-circle btn-xl" ng-click="roundCount()"><i class="fa fa-refresh fa-4x"></i></button>
+<a type="button" class="btn btn-info btn-circle btn-xl" ng-click="shuffleBtn()"><i class="fa fa-refresh fa-4x"></i></a>
+
+<!-- <p>&copy; 2015 - Taylor Bolin</p> -->

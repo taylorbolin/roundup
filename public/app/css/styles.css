@@ -46,3 +46,8 @@ h2 {
 h3 {
 	text-align: center;
 }
+p {
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+}

@@ -7,18 +7,6 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 		console.log(data);
 	});
 }])
-// .controller('NewRoundUpCtrl', ['$scope', '$location', 'RoundUp',
-// 	function($scope, $location, RoundUp) {
-// 		$scope.createRoundUp = function() {
-// 			var params = {
-// 				group_name: $scope.group_name,
-// 				member_name: $scope.member_name
-// 			}
-// 			var newRoundUp = new RoundUp(params);
-// 			newRoundup.$save();
-// 			$location.path('/:id');
-// 		}
-// 	}])
 .controller('NewRoundUpCtrl', ['$scope', '$location', 'RoundUp',
 	function($scope, $location, RoundUp) {
 		$scope.group = "";
@@ -27,7 +15,7 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 
 		$scope.addFriend = function() {
 			if ($scope.newFriend.length > 0) {
-			$scope.friends.push({friend : $scope.newFriend, done: false});
+			$scope.friends.push({friend : $scope.newFriend});
 			$scope.newFriend = "";
 			}
 		}
@@ -35,14 +23,18 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 			$scope.friends.remove(i);
 		}
 		$scope.submitGroup = function() {
-			console.log($scope.group);
-			console.log($scope.friends);
-			console.log('round count: '+$scope.round);
-			$location.path("/:id");
+			if ($scope.group.length > 0 && $scope.friends.length > 0) {
+				var params = {
+					group: $scope.group,
+					friends: $scope.friends
+				}
+				var newRoundUp = new RoundUp(params)
+				newRoundUp.$save();
+				console.log($scope.group);
+				console.log($scope.friends);
+				$location.path("/:id");
+			}
 		}
-		// needs another function to shuffle friends array and return
-		// selected user and redirect to show page
-		
 	Array.prototype.remove = function(from, to) {
   	var rest = this.slice((to || from) + 1 || this.length);
   	this.length = from < 0 ? this.length + from : from;
@@ -53,10 +45,16 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 	function($scope, RoundUp) {
 		$scope.round=1;
 
-		$scope.roundCount = function() {
+		$scope.shuffleBtn = function() {
+		// var group = $scope.group;
+		// var friends = $scope.friends;
+		console.log($scope.group);
+		console.log($scope.friends);
 		$scope.round+=1;
-		console.log('round count: '+$scope.round);
-		}
+		// for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+  //   		return o;
+    	}
+    	// shuffleBtn($scope.friends);
 	}]);
 
 // needs show controller to shuffle friends but remain on same page
