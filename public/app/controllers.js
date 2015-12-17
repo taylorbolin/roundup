@@ -7,33 +7,6 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 		console.log(data);
 	});
 }])
-// .controller('ShowRoundUpCtrl', ['$scope', '$routeParams', 'RoundUp', 
-// 	function($scope, $routeParams, RoundUp) {
-// 		$scope.round = 1;
-// 		RoundUp.get({
-// 			id: $routeParams.id
-// 		}, function success(data) {
-// 			$scope.roundup = data;
-// 		}, function error (data) {
-// 			console.log(data);
-// 		});
-		
-// 		$scope.shuffleBtn = function() {
-// 			function shuffle(o){
-//     			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-//     				return o;
-// 			}
-// 			shuffle($scope.roundup.friends);
-// 			$scope.round+=1;
-// 				if ($scope.round%5 === 1) {
-// 					alert("You've had "+($scope.round - 1)+" drinks! Get some water.");
-// 				} else {
-// 					($scope.round += 0)
-// 				}
-
-//     	}
-    
-// }])
 .controller('NewRoundUpCtrl', ['$scope', '$location', 'RoundUp',
 	function($scope, $location, RoundUp) {
 		$scope.group = "";
@@ -74,6 +47,20 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 }])
 .controller('ShowRoundUpCtrl', ['$scope', '$routeParams', 'RoundUp', 
 	function($scope, $routeParams, RoundUp) {
+		function ordinal(i) {
+    		var j = i % 10,
+        		k = i % 100;
+    		if (j == 1 && k != 11) {
+        		return i + "st";
+    		}
+    		if (j == 2 && k != 12) {
+        		return i + "nd";
+    		}
+    		if (j == 3 && k != 13) {
+        		return i + "rd";
+   			}
+    		return i + "th";
+		}
 		$scope.round = 1;
 		RoundUp.get({
 			id: $routeParams.id
@@ -82,21 +69,18 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 		}, function error (data) {
 			console.log(data);
 		});
-		
+	
 		$scope.shuffleBtn = function() {
 			function shuffle(o){
     			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     				return o;
 			}
 			shuffle($scope.roundup.friends);
-			$scope.round+=1;
+			$scope.round += 1;
 				if ($scope.round%5 === 1) {
 					alert("You've had "+($scope.round - 1)+" drinks! Get some water.");
-				} else {
-					($scope.round += 0)
-				}
+				} 
 
     	}
-    
-	}]);
+}]);
 
