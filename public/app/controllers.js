@@ -29,8 +29,9 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 				}
 				var newRoundUp = new RoundUp(params)
 				newRoundUp.$save().then(function(roundup) {
-					$location.path("/"+roundup._id);
+					// $location.path("/"+roundup._id);
 				});
+			$location.path("/"+roundup._id);
 			}
 			function shuffle(o){
     			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
