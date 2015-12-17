@@ -1,11 +1,12 @@
 <a ng-href="/"><h1>RoundUp</h1></a>
 
-
-<h2>Group Name</h2>
-{{group}}
+<h2>{{roundup.group}}</h2>
 <h2>Round {{round}} is on...</h2>
-<h2>Selected Friend</h2>
+<h2>{{roundup.friends[0].friend}}</h2>
 
 <a type="button" class="btn btn-info btn-circle btn-xl" ng-click="shuffleBtn()"><i class="fa fa-refresh fa-4x"></i></a>
+
+<!-- <a type="button" class="btn btn-info btn-circle btn-xl" ng-href="uber://?action=setPickup&pickup=my_location"><i class="fa fa-car fa-4x"></i></a> -->
+
 
 <!-- <p>&copy; 2015 - Taylor Bolin</p> -->

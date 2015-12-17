@@ -7,6 +7,33 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 		console.log(data);
 	});
 }])
+// .controller('ShowRoundUpCtrl', ['$scope', '$routeParams', 'RoundUp', 
+// 	function($scope, $routeParams, RoundUp) {
+// 		$scope.round = 1;
+// 		RoundUp.get({
+// 			id: $routeParams.id
+// 		}, function success(data) {
+// 			$scope.roundup = data;
+// 		}, function error (data) {
+// 			console.log(data);
+// 		});
+		
+// 		$scope.shuffleBtn = function() {
+// 			function shuffle(o){
+//     			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+//     				return o;
+// 			}
+// 			shuffle($scope.roundup.friends);
+// 			$scope.round+=1;
+// 				if ($scope.round%5 === 1) {
+// 					alert("You've had "+($scope.round - 1)+" drinks! Get some water.");
+// 				} else {
+// 					($scope.round += 0)
+// 				}
+
+//     	}
+    
+// }])
 .controller('NewRoundUpCtrl', ['$scope', '$location', 'RoundUp',
 	function($scope, $location, RoundUp) {
 		$scope.group = "";
@@ -31,9 +58,13 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 				newRoundUp.$save().then(function(roundup) {
 					$location.path("/"+roundup._id);
 				});
-				// console.log($scope.group);
-				// console.log($scope.friends);
 			}
+			function shuffle(o){
+    			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    				return o;
+			}
+			shuffle($scope.friends);
+			
 		}
 	Array.prototype.remove = function(from, to) {
   	var rest = this.slice((to || from) + 1 || this.length);
@@ -44,20 +75,27 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 .controller('ShowRoundUpCtrl', ['$scope', '$routeParams', 'RoundUp', 
 	function($scope, $routeParams, RoundUp) {
 		$scope.round = 1;
-		console.log($routeParams.id);
 		RoundUp.get({
 			id: $routeParams.id
 		}, function success(data) {
-			$scope.RoundUp = data;
+			$scope.roundup = data;
 		}, function error (data) {
 			console.log(data);
 		});
 		
-		// function should shuffle data and increment round. Maybe flag break after every 5/10 rounds.
 		$scope.shuffleBtn = function() {
-		// console.log($scope.group);
-		// console.log($scope.friends);
-		$scope.round+=1;
+			function shuffle(o){
+    			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    				return o;
+			}
+			shuffle($scope.roundup.friends);
+			$scope.round+=1;
+				if ($scope.round%5 === 1) {
+					alert("You've had "+($scope.round - 1)+" drinks! Get some water.");
+				} else {
+					($scope.round += 0)
+				}
+
     	}
     
 	}]);
