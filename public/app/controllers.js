@@ -71,8 +71,13 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 		});
 	
 		$scope.shuffleBtn = function() {
+			// $('#demo14').toggle(function(){
+			// 	$(this).trigger('startRumble');
+			// }, function(){
+			// 	$(this).trigger('stopRumble');
+			// });
 			function shuffle(o){
-    			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+				for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     				return o;
 			}
 			shuffle($scope.roundup.friends);
