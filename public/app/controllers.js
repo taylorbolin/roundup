@@ -23,7 +23,7 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
    			}
     		return i + "th";
 		}
-		$scope.round = ordinal(1;)
+		$scope.round = ordinal(1);
 		RoundUp.get({
 			id: $routeParams.id
 		}, function success(data) {
