@@ -10,7 +10,6 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 .controller('ShowRoundUpCtrl', ['$scope', '$routeParams', 'RoundUp', 
 	function($scope, $routeParams, RoundUp) {
 		$scope.round = 1;
-		ordinal($scope.round);
 		RoundUp.get({
 			id: $routeParams.id
 		}, function success(data) {
