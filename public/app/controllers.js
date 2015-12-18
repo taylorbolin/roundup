@@ -26,8 +26,8 @@ angular.module('RoundUpCtrls', ['RoundUpServices'])
 			$scope.round +=1;
 				if ($scope.round%5 === 1) {
 					alert("You've had "+($scope.round - 1)+" drinks! Get some water.");
-				} 
-    	}
+				}     	
+		}
 }])
 .controller('NewRoundUpCtrl', ['$scope', '$location', 'RoundUp',
 	function($scope, $location, RoundUp) {
